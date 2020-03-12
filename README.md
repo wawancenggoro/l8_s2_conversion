@@ -31,4 +31,4 @@ To generate the predicted images as attached in the paper, download and extract 
 python predict.py
 ```
 
-The predicted images in tif format can be downloaded [here](http://bdsrc.binus.ac.id/wawan/l8s2/sample-tifs)
+The predicted images in tif format can be downloaded [here](http://bdsrc.binus.ac.id/wawan/l8s2/sample-tifs).
