@@ -10,6 +10,8 @@ from submax.solver import SubMaxTrainer
 from transstride.solver import TransStrideTrainer
 from transmax.solver import TransMaxTrainer
 
+from substriderev.solver import SubStrideRevTrainer
+
 import argparse
 
 parser = argparse.ArgumentParser(description='Landsat-8 to Sentinel-2 Conversion')
@@ -66,6 +68,14 @@ def main():
         model = SubMaxTrainer(args, train_data_loader, val_data_loader)
     elif args.model == 'transmax':
         model = TransMaxTrainer(args, train_data_loader, val_data_loader)
+    elif args.model == 'substriderev':
+        model = SubStrideRevTrainer(args, train_data_loader, val_data_loader)
+    # elif args.model == 'transstride':
+    #     model = TransStrideTrainer(args, train_data_loader, val_data_loader)
+    # elif args.model == 'submax':
+    #     model = SubMaxTrainer(args, train_data_loader, val_data_loader)
+    # elif args.model == 'transmax':
+    #     model = TransMaxTrainer(args, train_data_loader, val_data_loader)
     else:
         raise Exception("the model does not exist")
 
