@@ -11,6 +11,10 @@ from transstride.solver import TransStrideTrainer
 from transmax.solver import TransMaxTrainer
 
 from substriderev.solver import SubStrideRevTrainer
+from submaxrev.solver import SubMaxRevTrainer
+from transstriderev.solver import TransStrideRevTrainer
+from transmaxrev.solver import TransMaxRevTrainer
+
 
 import argparse
 
@@ -70,12 +74,12 @@ def main():
         model = TransMaxTrainer(args, train_data_loader, val_data_loader)
     elif args.model == 'substriderev':
         model = SubStrideRevTrainer(args, train_data_loader, val_data_loader)
-    # elif args.model == 'transstride':
-    #     model = TransStrideTrainer(args, train_data_loader, val_data_loader)
-    # elif args.model == 'submax':
-    #     model = SubMaxTrainer(args, train_data_loader, val_data_loader)
-    # elif args.model == 'transmax':
-    #     model = TransMaxTrainer(args, train_data_loader, val_data_loader)
+    elif args.model == 'transstriderev':
+        model = TransStrideRevTrainer(args, train_data_loader, val_data_loader)
+    elif args.model == 'submaxrev':
+        model = SubMaxRevTrainer(args, train_data_loader, val_data_loader)
+    elif args.model == 'transmaxrev':
+        model = TransMaxRevTrainer(args, train_data_loader, val_data_loader)
     else:
         raise Exception("the model does not exist")
 
