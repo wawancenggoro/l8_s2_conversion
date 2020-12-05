@@ -13,8 +13,9 @@ class Net(nn.Module):
 
         self.layers_out_01 = torch.nn.Sequential(
             nn.Conv2d(64, 32, kernel_size=3, stride=1, padding=1),
+            nn.MaxPool2d(2, stride=2),
             nn.ReLU(),
-            nn.Conv2d(in_channels=32, out_channels=1, kernel_size=3, stride=2, padding=1, bias=True)
+            nn.Conv2d(in_channels=32, out_channels=1, kernel_size=3, stride=1, padding=1, bias=True)
         )
         self.layers_out_02 = torch.nn.Sequential(
             nn.Conv2d(64, 32, kernel_size=3, stride=1, padding=1),
@@ -39,21 +40,21 @@ class Net(nn.Module):
             nn.ReLU(),
             nn.Conv2d(in_channels=32, out_channels=(3 ** 2), kernel_size=3, stride=1, padding=1, bias=True),
             nn.PixelShuffle(3),
-            nn.Conv2d(in_channels=1, out_channels=1, kernel_size=3, stride=2, padding=1, bias=True)
+            nn.MaxPool2d(2, stride=2)
         )
         self.layers_out_06 = torch.nn.Sequential(
             nn.Conv2d(64, 32, kernel_size=3, stride=1, padding=1),
             nn.ReLU(),
             nn.Conv2d(in_channels=32, out_channels=(3 ** 2), kernel_size=3, stride=1, padding=1, bias=True),
             nn.PixelShuffle(3),
-            nn.Conv2d(in_channels=1, out_channels=1, kernel_size=3, stride=2, padding=1, bias=True)
+            nn.MaxPool2d(2, stride=2)
         )
         self.layers_out_07 = torch.nn.Sequential(
             nn.Conv2d(64, 32, kernel_size=3, stride=1, padding=1),
             nn.ReLU(),
             nn.Conv2d(in_channels=32, out_channels=(3 ** 2), kernel_size=3, stride=1, padding=1, bias=True),
             nn.PixelShuffle(3),
-            nn.Conv2d(in_channels=1, out_channels=1, kernel_size=3, stride=2, padding=1, bias=True)
+            nn.MaxPool2d(2, stride=2)
         )
         self.layers_out_08 = torch.nn.Sequential(
             nn.Conv2d(64, 32, kernel_size=3, stride=1, padding=1),
@@ -66,33 +67,36 @@ class Net(nn.Module):
             nn.ReLU(),
             nn.Conv2d(in_channels=32, out_channels=(3 ** 2), kernel_size=3, stride=1, padding=1, bias=True),
             nn.PixelShuffle(3),
-            nn.Conv2d(in_channels=1, out_channels=1, kernel_size=3, stride=2, padding=1, bias=True)
+            nn.MaxPool2d(2, stride=2)
         )
         self.layers_out_09 = torch.nn.Sequential(
             nn.Conv2d(64, 32, kernel_size=3, stride=1, padding=1),
+            nn.MaxPool2d(2, stride=2),
             nn.ReLU(),
-            nn.Conv2d(in_channels=32, out_channels=1, kernel_size=3, stride=2, padding=1, bias=True)
+            nn.Conv2d(in_channels=32, out_channels=1, kernel_size=3, stride=1, padding=1, bias=True)
         )
         self.layers_out_10 = torch.nn.Sequential(
             nn.Conv2d(64, 32, kernel_size=3, stride=1, padding=1),
+            nn.MaxPool2d(2, stride=2),
             nn.ReLU(),
-            nn.Conv2d(in_channels=32, out_channels=1, kernel_size=3, stride=2, padding=1, bias=True)
+            nn.Conv2d(in_channels=32, out_channels=1, kernel_size=3, stride=1, padding=1, bias=True)
         )
         self.layers_out_11 = torch.nn.Sequential(
             nn.Conv2d(64, 32, kernel_size=3, stride=1, padding=1),
             nn.ReLU(),
             nn.Conv2d(in_channels=32, out_channels=(3 ** 2), kernel_size=3, stride=1, padding=1, bias=True),
             nn.PixelShuffle(3),
-            nn.Conv2d(in_channels=1, out_channels=1, kernel_size=3, stride=2, padding=1, bias=True)
+            nn.MaxPool2d(2, stride=2)
         )
         self.layers_out_12 = torch.nn.Sequential(
             nn.Conv2d(64, 32, kernel_size=3, stride=1, padding=1),
             nn.ReLU(),
             nn.Conv2d(in_channels=32, out_channels=(3 ** 2), kernel_size=3, stride=1, padding=1, bias=True),
             nn.PixelShuffle(3),
-            nn.Conv2d(in_channels=1, out_channels=1, kernel_size=3, stride=2, padding=1, bias=True)
+            nn.MaxPool2d(2, stride=2)
         )
-        
+
+
         self._initialize_weights()
 
     def _initialize_weights(self):
@@ -113,7 +117,7 @@ class Net(nn.Module):
         init.orthogonal_(self.layers_out_11[0].weight, init.calculate_gain('relu'))
         init.orthogonal_(self.layers_out_12[0].weight, init.calculate_gain('relu'))
         
-        init.orthogonal_(self.layers_out_01[2].weight)
+        init.orthogonal_(self.layers_out_01[3].weight)
         init.orthogonal_(self.layers_out_02[2].weight)
         init.orthogonal_(self.layers_out_03[2].weight)
         init.orthogonal_(self.layers_out_04[2].weight)
@@ -122,17 +126,10 @@ class Net(nn.Module):
         init.orthogonal_(self.layers_out_07[2].weight)
         init.orthogonal_(self.layers_out_08[2].weight)
         init.orthogonal_(self.layers_out_8A[2].weight)
-        init.orthogonal_(self.layers_out_09[2].weight)
-        init.orthogonal_(self.layers_out_10[2].weight)
+        init.orthogonal_(self.layers_out_09[3].weight)
+        init.orthogonal_(self.layers_out_10[3].weight)
         init.orthogonal_(self.layers_out_11[2].weight)
         init.orthogonal_(self.layers_out_12[2].weight)
-
-        init.orthogonal_(self.layers_out_05[4].weight)
-        init.orthogonal_(self.layers_out_06[4].weight)
-        init.orthogonal_(self.layers_out_07[4].weight)
-        init.orthogonal_(self.layers_out_8A[4].weight)
-        init.orthogonal_(self.layers_out_11[4].weight)
-        init.orthogonal_(self.layers_out_12[4].weight)
 
     def forward(self, x):
         x = self.conv1(x)
