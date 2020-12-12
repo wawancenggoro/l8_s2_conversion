@@ -35,24 +35,24 @@ class Net(nn.Module):
         self.layers_out_05 = torch.nn.Sequential(
             nn.Conv2d(64, 32, kernel_size=3, stride=1, padding=1),
             nn.ReLU(),
-            nn.Conv2d(in_channels=32, out_channels=32, kernel_size=3, stride=1, padding=1),
-            nn.ReLU(),
+            # nn.Conv2d(in_channels=32, out_channels=32, kernel_size=3, stride=1, padding=1),
+            # nn.ReLU(),
             nn.ConvTranspose2d(in_channels = 32, out_channels = 1, kernel_size = 3, stride = 3, padding = 0, bias=True),
             nn.MaxPool2d(2, stride=2)
         )
         self.layers_out_06 = torch.nn.Sequential(
             nn.Conv2d(64, 32, kernel_size=3, stride=1, padding=1),
             nn.ReLU(),
-            nn.Conv2d(in_channels=32, out_channels=32, kernel_size=3, stride=1, padding=1, bias=True),
-            nn.ReLU(),
+            # nn.Conv2d(in_channels=32, out_channels=32, kernel_size=3, stride=1, padding=1, bias=True),
+            # nn.ReLU(),
             nn.ConvTranspose2d(in_channels = 32, out_channels = 1, kernel_size = 3, stride = 3, padding = 0, bias=True),
             nn.MaxPool2d(2, stride=2)
         )
         self.layers_out_07 = torch.nn.Sequential(
             nn.Conv2d(64, 32, kernel_size=3, stride=1, padding=1),
             nn.ReLU(),
-            nn.Conv2d(in_channels=32, out_channels=32, kernel_size=3, stride=1, padding=1),
-            nn.ReLU(),
+            # nn.Conv2d(in_channels=32, out_channels=32, kernel_size=3, stride=1, padding=1),
+            # nn.ReLU(),
             nn.ConvTranspose2d(in_channels = 32, out_channels = 1, kernel_size = 3, stride = 3, padding = 0, bias=True),
             nn.MaxPool2d(2, stride=2)
         )
@@ -64,8 +64,8 @@ class Net(nn.Module):
         self.layers_out_8A = torch.nn.Sequential(
             nn.Conv2d(64, 32, kernel_size=3, stride=1, padding=1),
             nn.ReLU(),
-            nn.Conv2d(in_channels=32, out_channels=32, kernel_size=3, stride=1, padding=1),
-            nn.ReLU(),
+            # nn.Conv2d(in_channels=32, out_channels=32, kernel_size=3, stride=1, padding=1),
+            # nn.ReLU(),
             nn.ConvTranspose2d(in_channels = 32, out_channels = 1, kernel_size = 3, stride = 3, padding = 0, bias=True),
             nn.MaxPool2d(2, stride=2)
         )
@@ -84,16 +84,16 @@ class Net(nn.Module):
         self.layers_out_11 = torch.nn.Sequential(
             nn.Conv2d(64, 32, kernel_size=3, stride=1, padding=1),
             nn.ReLU(),
-            nn.Conv2d(in_channels=32, out_channels=32, kernel_size=3, stride=1, padding=1),
-            nn.ReLU(),
+            # nn.Conv2d(in_channels=32, out_channels=32, kernel_size=3, stride=1, padding=1),
+            # nn.ReLU(),
             nn.ConvTranspose2d(in_channels = 32, out_channels = 1, kernel_size = 3, stride = 3, padding = 0, bias=True),
             nn.MaxPool2d(2, stride=2)
         )
         self.layers_out_12 = torch.nn.Sequential(
             nn.Conv2d(64, 32, kernel_size=3, stride=1, padding=1),
             nn.ReLU(),
-            nn.Conv2d(in_channels=32, out_channels=32, kernel_size=3, stride=1, padding=1),
-            nn.ReLU(),
+            # nn.Conv2d(in_channels=32, out_channels=32, kernel_size=3, stride=1, padding=1),
+            # nn.ReLU(),
             nn.ConvTranspose2d(in_channels = 32, out_channels = 1, kernel_size = 3, stride = 3, padding = 0, bias=True),
             nn.MaxPool2d(2, stride=2)
         )
@@ -132,12 +132,12 @@ class Net(nn.Module):
         init.orthogonal_(self.layers_out_11[2].weight, init.calculate_gain('relu'))
         init.orthogonal_(self.layers_out_12[2].weight, init.calculate_gain('relu'))
 
-        init.orthogonal_(self.layers_out_05[4].weight)
-        init.orthogonal_(self.layers_out_06[4].weight)
-        init.orthogonal_(self.layers_out_07[4].weight)
-        init.orthogonal_(self.layers_out_8A[4].weight)
-        init.orthogonal_(self.layers_out_11[4].weight)
-        init.orthogonal_(self.layers_out_12[4].weight)
+        # init.orthogonal_(self.layers_out_05[4].weight)
+        # init.orthogonal_(self.layers_out_06[4].weight)
+        # init.orthogonal_(self.layers_out_07[4].weight)
+        # init.orthogonal_(self.layers_out_8A[4].weight)
+        # init.orthogonal_(self.layers_out_11[4].weight)
+        # init.orthogonal_(self.layers_out_12[4].weight)
 
     def forward(self, x):
         x = self.conv1(x)
